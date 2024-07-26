@@ -29,11 +29,11 @@ stages{
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ebs']]) {
                     script
 					{
-						def buildNumber=currentBuild.number
+						
                 sh '''
 		ls -lart
   pwd
-                aws elasticbeanstalk create-application-version --application-name ebsweb --version-label ebsweb-${buildNumber} --source-bundle S3Bucket="beanstalk-html",S3Key="html.zip"
+                aws elasticbeanstalk create-application-version --application-name ebsweb --version-label ebsweb-${BUILD_NUM} --source-bundle S3Bucket="beanstalk-html",S3Key="html.zip"
 aws elasticbeanstalk update-environment --environment-name Ebsweb-env --version-label ebsweb-${BUILD_NUM}
                 '''
                 }
