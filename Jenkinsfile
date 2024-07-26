@@ -17,7 +17,7 @@ stages{
                 sh '''
                 zip -r html.zip *
                 ls -lart
-                aws s3 cp html.zip s3://ebs-test1
+                aws s3 cp html.zip s3://beanstalk-html
                 '''
                 }
 				}
