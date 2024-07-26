@@ -8,12 +8,16 @@ pipeline {
 stages{
         stage('Build'){
             steps {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ebs']]) {
+                    script
+					{
                 sh '''
                 zip -r html.zip *
-                aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-                echo $AWS_ACCESS_KEY_ID
-                aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+                
+                aws s3 cp html.zp s3://ebs-test1
                 '''
+                }
+				}
             }
           
         }
