@@ -33,6 +33,7 @@ stages{
                 sh '''
 		ls -lart
   pwd
+  ws elasticbeanstalk create-application --application-name ebsweb --description "My Application"
                 aws elasticbeanstalk create-application-version --application-name ebsweb --version-label ebsweb-${BUILD_NUM} --source-bundle S3Bucket="beanstalk-html",S3Key="html.zip"
 aws elasticbeanstalk update-environment --environment-name Ebsweb-env --version-label ebsweb-${BUILD_NUM}
                 '''
