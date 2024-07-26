@@ -3,7 +3,9 @@ pipeline {
     agent any
     
 
-
+environment {
+	BUILD_NUM="${env.BUILD_NUMBER}"
+}
 
 
 stages{
@@ -31,8 +33,8 @@ stages{
                 sh '''
 		ls -lart
   pwd
-                aws elasticbeanstalk create-application-version --application-name ebsweb --version-label "ebsweb-${buildNumber}" --source-bundle S3Bucket="beanstalk-html",S3Key="html.zip"
-aws elasticbeanstalk update-environment --environment-name Ebsweb-env --version-label "ebsweb-${buildNumber}"
+                aws elasticbeanstalk create-application-version --application-name ebsweb --version-label ebsweb-${buildNumber} --source-bundle S3Bucket="beanstalk-html",S3Key="html.zip"
+aws elasticbeanstalk update-environment --environment-name Ebsweb-env --version-label ebsweb-${BUILD_NUM}
                 '''
                 }
 				}
