@@ -5,7 +5,7 @@ provider "aws" {
  resource "aws_instance" "example" {
    ami           = "ami-0ae8f15ae66fe8cda"
    instance_type = "t2.micro"
-   key_name = "nginx"
+   key_name = "sonarkey"
    count="2"
 
 
