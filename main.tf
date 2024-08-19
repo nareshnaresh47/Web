@@ -1,9 +1,9 @@
 provider "aws" {
-    region     = "ap-southeast-1"
+    region     = "us-east-1"
  }
 
  resource "aws_instance" "example" {
-   ami           = "ami-0a6b545f62129c495"
+   ami           = "ami-0ae8f15ae66fe8cda"
    instance_type = "t2.micro"
    key_name = "nginx"
    count="2"
