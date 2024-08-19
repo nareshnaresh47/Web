@@ -11,13 +11,13 @@ environment {
 stages{
         stage('Build'){
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ebs']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ecs']]) {
                     script
 					{
                 sh '''
-                zip -r html.zip *
-                ls -lart
-                aws s3 cp html.zip s3://beanstalk-html
+              terraform init
+	      terraform plan
+       terraform -auto-approve
                 '''
                 }
 				}
