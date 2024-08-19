@@ -15,7 +15,7 @@ stages{
                     script
 					{
                 sh '''
-              terraform destroy
+              terraform destroy -auto-approve
                 '''
                 }
 				}
