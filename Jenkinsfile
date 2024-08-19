@@ -17,7 +17,7 @@ stages{
                 sh '''
               terraform init
 	      terraform plan
-       terraform -auto-approve
+       terraform apply -auto-approve
                 '''
                 }
 				}
