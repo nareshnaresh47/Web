@@ -1,7 +1,7 @@
 terraform {
 	backend "s3" {
-	bucket="beanstalk-html"
+	bucket="cf-templates-bv42advgissg-us-east-1"
 	key="state/ec2.tfstate"
-	region="ap-southeast-1"
+	region="us-east-1"
 	}
 }
